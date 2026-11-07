@@ -1,0 +1,113 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+  --color-brand: #2563eb;
+  --color-brand-dark: #172554;
+  --color-canvas: #f8fafc;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #f8fafc;
+  font-feature-settings: "ss01", "cv11";
+}
+
+::selection {
+  background: #2563eb;
+  color: #fff;
+}
+
+/* ---- signature helpers ---- */
+.text-gradient {
+  background: linear-gradient(100deg, #2563eb 0%, #4f46e5 55%, #0ea5e9 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.pattern-grid {
+  background-image:
+    linear-gradient(to right, rgba(37, 99, 235, 0.055) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(37, 99, 235, 0.055) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+.pattern-dots {
+  background-image: radial-gradient(rgba(37, 99, 235, 0.14) 1.2px, transparent 1.2px);
+  background-size: 20px 20px;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ---- inputs ---- */
+.field-input {
+  @apply w-full rounded-xl border border-slate-200 bg-white px-3.5 py-2.5 text-sm font-medium text-slate-800 placeholder-slate-400 shadow-sm transition outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100;
+}
+.field-label {
+  @apply mb-1.5 block text-[13px] font-bold text-slate-700;
+}
+
+/* ---- keyframes ---- */
+@keyframes float-slow {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+@keyframes pulse-ring {
+  0% {
+    box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.25);
+  }
+  70% {
+    box-shadow: 0 0 0 14px rgba(37, 99, 235, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(37, 99, 235, 0);
+  }
+}
+
+.animate-float-slow {
+  animation: float-slow 6s ease-in-out infinite;
+}
+.animate-float-slower {
+  animation: float-slow 8s ease-in-out 1s infinite;
+}
+.animate-marquee {
+  animation: marquee 46s linear infinite;
+}
+.animate-pulse-ring {
+  animation: pulse-ring 2.6s ease-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-float-slow,
+  .animate-float-slower,
+  .animate-marquee,
+  .animate-pulse-ring {
+    animation: none;
+  }
+}
